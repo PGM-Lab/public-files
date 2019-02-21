@@ -1,0 +1,62 @@
+
+
+
+\documentclass[crop,tikz]{standalone}% 'crop' is the default for v1.0, before it was 'preview'
+%\usetikzlibrary{...}% tikz package already loaded by 'tikz' option
+\usetikzlibrary{trees}
+\usetikzlibrary{shapes}
+\usetikzlibrary{trees}
+\usetikzlibrary{shapes}
+\usetikzlibrary{matrix, fit}
+\usetikzlibrary{arrows}
+\usetikzlibrary{shapes}
+
+\usepackage{bm}
+
+\begin{document}
+
+
+
+\begin{tikzpicture}
+
+\tikzstyle{hidden}=[circle, minimum size = 10mm, thick, draw =black!80, node distance = 16mm]
+\tikzstyle{observed}=[circle, minimum size = 10mm, thick, draw =black!80, node distance = 16mm, fill=gray!50]
+
+
+
+\tikzstyle{connect}=[-latex, thick]
+
+
+\node[observed] (xn) at (0,0)  {$\bm{x}_n$};
+\node[hidden] (zn) at (0,1.5)  {$\bm{z}_n$};
+\node[hidden] (beta) at (0,-2)  {$\bm{\beta}$};
+
+
+
+\node (xd) at (3.2,0)  {$\bm{x}_n \sim \mathcal{N}_d(\bm{z}_n \cdot \bm{\beta}^T,I) $};
+\node (zd) at (3,1.5)  {$\bm{z}_n\sim \mathcal{N}_k (0,I)$};
+\node (betad) at (3,-2)  {$\bm{\beta} \sim \mathcal{N}_{d\times k}(0,I)$};
+
+
+\path (zn) [connect]  edge (xn);
+
+\path (beta) [connect]  edge (xn);
+
+
+
+
+\draw[rounded corners=5pt]
+  (-1,2.25) rectangle (1,-1);
+  
+
+
+%\path (det3) [connect]  edge (sum);
+
+
+\node at (0.75,-0.75) {$N$};
+
+
+
+
+\end{tikzpicture}
+\end{document}
